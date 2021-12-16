@@ -1,0 +1,46 @@
+* {
+    box-sizing: border-box;
+    font-family:'Courier New', Courier, monospace
+}
+
+title {
+    display: none;
+}
+
+/* Header */
+header {
+    text-align: center;
+}
+
+#step {
+    margin-bottom: 30px;
+}
+
+/* Main */
+body {
+    margin: 0;
+}
+
+main {
+    min-width: max-content;
+}
+
+canvas {
+    border: 1px solid black;
+}
+
+.cell {
+    width: 5px;
+    height: 5px;
+    padding: 0;
+    background-color: gray;
+    display: inline-block;
+    margin: 0;
+    position: relative;
+}
+
+.grid {
+    display: block;
+    text-align: center;
+    margin: -13px;
+}
