@@ -1,6 +1,6 @@
 * {
     box-sizing: border-box;
-    font-family:'Courier New', Courier, monospace
+    font-family:'Courier New', Courier, monospace;
 }
 
 title {
@@ -10,6 +10,10 @@ title {
 /* Header */
 header {
     text-align: center;
+}
+
+form {
+    display: inline-block;
 }
 
 #step {
@@ -25,13 +29,9 @@ main {
     min-width: max-content;
 }
 
-canvas {
-    border: 1px solid black;
-}
-
 .cell {
-    width: 5px;
-    height: 5px;
+    width: 4px;
+    height: 4px;
     padding: 0;
     background-color: gray;
     display: inline-block;
@@ -42,5 +42,5 @@ canvas {
 .grid {
     display: block;
     text-align: center;
-    margin: -13px;
+    margin: -14px;
 }

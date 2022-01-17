@@ -7,8 +7,8 @@ RULES
 */
 
 // Sets number of rows and columns
-let rows = 160;
-let cols = 160;
+let rows = 200;
+let cols = 200;
 let initialValues = [];
 let rowValues = [];
 let nextGridValues = [];
@@ -50,9 +50,6 @@ selectorArray.forEach(element => element.addEventListener('click', switchColor))
 // Resets all cells background color to gray
 let resetCells = () => {
     window.location.reload();
-    //for (let i = 0; i < cell.length; i++) {
-    //    cell[i].style.backgroundColor = 'gray';
-    //}
 }
 
 document.getElementById('reset').addEventListener('click', resetCells);
@@ -60,6 +57,24 @@ document.getElementById('reset').addEventListener('click', resetCells);
 // Creates a 2D array of HTML selectors for each cell
 while (copySelectorArray.length) {
     selector2DArray.push(copySelectorArray.splice(0,cols));
+}
+
+// Sets border cell visibilty to hidden
+// Top row
+for (let i = 0; i < cols; i++) {
+    selector2DArray[0][i].style.visibility = 'hidden';
+}
+// Bottom row
+for (let i = 0; i < cols; i++) {
+    selector2DArray[rows - 1][i].style.visibility = 'hidden';
+}
+// Left side
+for (let i = 0; i < rows; i++) {
+    selector2DArray[i][0].style.visibility = 'hidden';
+}
+// Right side
+for (let i = 0; i < rows; i++) {
+    selector2DArray[i][rows - 1].style.visibility = 'hidden';
 }
 
 // Creates array of cell status values (0 or 1) based on current grid colors
@@ -99,52 +114,6 @@ let calculateNextGridValues = () => {
         for (let i = 0; i < tempValues.length; i++) {
             currentValues[i] = tempValues[i].slice();
         }
-    }
-
-    // Calculate corners manually in this order: top-left, top-right, bottom-left, bottom-right
-    //top-left corner
-    sum = currentValues[0][1] + currentValues[1][0] + currentValues[1][1];
-    if (currentValues[0][0] === 0 && sum === 3) {nextValues[0].splice(0,1,1);}
-    else if (currentValues[0][0] === 1 && (sum === 2 || sum === 3)) {nextValues[0].splice(0,1,1);}
-    //top-right corner
-    sum = currentValues[0][cols-2] + currentValues[1][cols-1] + currentValues[1][cols-2];
-    if (currentValues[0][cols-1] === 0 && sum === 3) {nextValues[0].splice(cols-1,1,1);}
-    else if (currentValues[0][cols-1] === 1 && (sum === 2 || sum === 3)) {nextValues[0].splice(cols-1,1,1);}
-    //bottom-left corner
-    sum = currentValues[rows-2][0] + currentValues[rows-2][1] + currentValues[rows-1][1];
-    if (currentValues[rows-1][0] === 0 && sum === 3) {nextValues[rows-1].splice(0,1,1);}
-    else if (currentValues[rows-1][0] === 1 && (sum === 2 || sum === 3)) {nextValues[rows-1].splice(0,1,1);}
-    //bottom-right corner
-    sum = currentValues[rows-1][cols-2] + currentValues[rows-2][cols-2] + currentValues[rows-2][cols-1];
-    if (currentValues[rows-1][cols-1] === 0 && sum === 3) {nextValues[rows-1].splice(cols-1,1,1);}
-    else if (currentValues[rows-1][cols-1] === 1 && (sum === 2 || sum === 3)) {nextValues[rows-1].splice(cols-1,1,1);}
-
-    // Calculate top row excluding corners
-    for (let i = 1; i < cols - 1; i++) {
-        sum = currentValues[0][i-1] + currentValues[1][i-1] + currentValues[1][i] + currentValues[1][i+1] + currentValues[0][i+1];
-        if (currentValues[0][i] === 0 && sum === 3) {nextValues[0].splice(i,1,1);}
-        else if (currentValues[0][i] === 1 && (sum === 2 || sum === 3)) {nextValues[0].splice(i,1,1);}
-    }
-
-    // Calculate bottom row excluding corners
-    for (let i = 1; i < cols - 1; i++) {
-        sum = currentValues[rows-1][i-1] + currentValues[rows-2][i-1] + currentValues[rows-2][i] + currentValues[rows-2][i+1] + currentValues[rows-1][i+1];
-        if (currentValues[rows-1][i] === 0 && sum === 3) {nextValues[rows-1].splice(i,1,1);}
-        else if (currentValues[rows-1][i] === 1 && (sum === 2 || sum === 3)) {nextValues[rows-1].splice(i,1,1);}
-    }
-
-    // Calculate left side excluding corners
-    for (let i = 1; i < rows - 1; i++) {
-        sum = currentValues[i-1][0] + currentValues[i-1][1] + currentValues[i][1] + currentValues[i+1][1] + currentValues[i+1][0];
-        if (currentValues[i][0] === 0 && sum === 3) {nextValues[i].splice(0,1,1);}
-        else if (currentValues[i][0] === 1 && (sum === 2 || sum === 3)) {nextValues[i].splice(0,1,1);}
-    }
-
-    // Calculate right side excluding corners
-    for (let i = 1; i < rows - 1; i++) {
-        sum = currentValues[i-1][cols-1] + currentValues[i-1][cols-2] + currentValues[i][cols-2] + currentValues[i+1][cols-2] + currentValues[i+1][cols-1];
-        if (currentValues[i][cols-1] === 0 && sum === 3) {nextValues[i].splice(cols-1,1,1);}
-        else if (currentValues[i][cols-1] === 1 && (sum === 2 || sum === 3)) {nextValues[i].splice(cols-1,1,1);}
     }
 
     // Calculate all cells excluding border cells
