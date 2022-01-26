@@ -3,19 +3,44 @@
     <head>
         <title>Conway's Game of Life</title>
         <link href='css/styles.css' rel='stylesheet' id='style'>
+        <script src='js/buttonanimation.js' defer></script>
         <script src='js/main.js' defer></script>
     </head>
 
     <body>
-        <header>
-            <h1 id='header'>Conway's Game of Life</h1>
-            <button id='step'>Step</button>
-            <button id='run'>Run</button>
-            <button id='freeze'>Freeze</button>
-            <button id='randomize'>Randomize</button>
-            <button id='reset'>Reset</button>
+        <header id='header-element'>
+            <div id='welcome-container'>
+                <h1 id='welcome' class='intro'>Welcome to Conway's Game of Life!</h1>
+            </div>
+            <div id='button-container'>
+                <button id='step' class='header-button'>Step</button>
+                <button id='run' class='header-button'>Run</button>
+                <button id='freeze' class='header-button'>Freeze</button>
+                <button id='randomize' class='header-button'>Randomize</button>
+                <button id='reset' class='header-button'>Reload</button>
+            </div>
         </header>
         <main id='main'>
+            <section id='game-window'>
+            </section>
+            <div id='intro-container'>
+                <ol class='rules-list'>How to play:
+                    <br>
+                    <br>
+                    <li>Select which cells are initially alive or dead by clicking on them. Green is alive, gray is dead.</li>
+                    <br>
+                    <li>Press the run button!</li>
+                    <br>
+                    <li>Any live cell with fewer than two live neighbours dies by underpopulation.</li>
+                    <br>
+                    <li>Any live cell with two or three live neighbours lives on to the next generation.</li>
+                    <br>
+                    <li>Any live cell with more than three live neighbours dies by overpopulation.</li>
+                    <br>
+                    <li>Any dead cell with exactly three live neighbours becomes a live cell through reproduction.</li>
+                </ol>
+                <button id='play' class='particle-button intro'>Play!</button>
+            </div>
         </main>
     </body>
 </html>
