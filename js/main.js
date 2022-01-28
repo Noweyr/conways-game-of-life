@@ -1,6 +1,6 @@
 // Sets number of rows and columns
-let rows = 200;
-let cols = 300;
+let rows = 160;
+let cols = 240;
 let initialValues = [];
 let tick = 0;
 let tempValues;
@@ -157,7 +157,7 @@ document.getElementById('step').addEventListener('click', calculateNextGridValue
 
 // Run and freeze button functionality
 let run = () => {
-    let intervalId = window.setInterval(calculateNextGridValues, 20);
+    let intervalId = window.setInterval(calculateNextGridValues, 100);
 
     let freeze = () => {
         window.clearInterval(intervalId);
