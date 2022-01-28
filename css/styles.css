@@ -105,12 +105,12 @@ li {
 #game-window {
     visibility: hidden;
     opacity: 0;
-    width: 75rem;
+    width: 88.75rem;
     height: 50rem;
     position: absolute;
     top: 7rem;
     left: 50%;
-    margin-left: -37.5rem;
+    margin-left: -44.375rem;
     z-index: 2;
 }
 

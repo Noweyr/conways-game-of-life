@@ -1,6 +1,6 @@
 // Sets number of rows and columns
 let rows = 160;
-let cols = 240;
+let cols = 284;
 let initialValues = [];
 let tick = 0;
 let tempValues;
@@ -75,9 +75,10 @@ const transition = async () => {
     introElements.forEach(e => e.style.transition = 'transform .6s ease-in-out');
     introElements.forEach(e => e.style.transform = 'scale(0)');
     rulesList.forEach(e => e.style.transition = 'transform .6s ease-in-out');
-    rulesList.forEach(e => e.style.transform = 'scale(.58, .65) translate(-63rem, 0)');
+    rulesList.forEach(e => e.style.transform = 'scale(0)');
+    //rulesList.forEach(e => e.style.transform = 'scale(.58, .65) translate(-63rem, 0)');
 
-    await sleep(100);
+    await sleep(300);
     let gameButtons = document.getElementById('button-container');
     gameButtons.style.visibility = 'visible';
     gameButtons.style.transition = 'opacity .6s ease-in-out';
